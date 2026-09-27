@@ -1,10 +1,17 @@
-function toWeirdCase(string){
-  let m=0,p="";
-  for(let i=0;i<string.length;i++){
-    if(string[i]==' '){m=0;p+=string[i];continue;}
-    else if(m%2==0)p+=string[i].toUpperCase();
-    else p+=string[i].toLowerCase();
-    m++;
+function primeFactors(n){
+let str="";
+  for(let i=2;n!=1;i++){
+    let b=false;
+    for(let j=1;j<=9;j++){
+      if(i%j==0 && i<10 && i!=2&& i!=3&& i!=5&& i!=7)b=true;
+    }
+    if (b)continue;
+    for(let j=1;Number.isInteger(n/i);j++){
+      n/=i;
+      b=j;
+    }
+    if(b==1)str+=`(${i})`;
+    else if(1<b)str+=`(${i}**${b})`;
   }
-  return p;
+  return str;
 }
